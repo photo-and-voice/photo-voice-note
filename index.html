@@ -124,7 +124,7 @@
   .grid.list-view .card-img-wrap { padding-bottom: 56%; }
   .grid.list-view .card-body { padding: 1.2rem 1.5rem 1rem; }
   .grid.list-view .card-voice { font-size: 1rem; line-height: 1.9; }
-  .grid.list-view .card-id-row { font-size: 0.8rem; }
+  .grid.list-view .card-id-row { font-size: 1rem; }
 
   .card {
     position: relative; border-radius: 3px; overflow: hidden; cursor: pointer;
@@ -142,10 +142,14 @@
 
   .card-id-row {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 0.7rem; color: var(--accent);
-    letter-spacing: 0.15em; margin-bottom: 0.4rem;
+    font-size: 0.9rem; color: var(--text-exif);
+    letter-spacing: 0.08em; margin-bottom: 0.4rem;
     display: flex; align-items: baseline; gap: 0.5rem;
     transition: color var(--transition-theme);
+  }
+  .card-id-row .card-id {
+    font-size: 0.6rem; color: var(--accent);
+    letter-spacing: 0.15em;
   }
   .card-date {
     color: var(--text-exif); letter-spacing: 0.05em;
@@ -183,10 +187,11 @@
 
   .overlay-id-row {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 0.85rem; color: var(--accent);
-    letter-spacing: 0.2em; margin-bottom: 0.6rem;
+    font-size: 1rem; color: var(--text-dim);
+    letter-spacing: 0.08em; margin-bottom: 0.6rem;
     display: flex; align-items: baseline; gap: 0.6rem;
   }
+  .overlay-id-row .overlay-id { font-size: 0.7rem; color: var(--accent); letter-spacing: 0.2em; }
   .overlay-date { color: var(--text-dim); letter-spacing: 0.05em; }
 
   .overlay-voice { font-size: 1.05rem; line-height: 1.9; color: var(--text-voice); margin-bottom: 0.8rem; max-width: 600px; }
@@ -370,7 +375,7 @@ function renderCards() {
         <img src="${photo.src}" alt="${photo.id}" loading="lazy">
       </div>
       <div class="card-body">
-        <div class="card-id-row">${photo.id}${dateHtml}</div>
+        <div class="card-id-row"><span class="card-id">${photo.id}</span>${dateHtml}</div>
         <div class="card-voice">${photo.voice}</div>
         ${cardExifHtml(photo.exif)}
         <div class="card-meta">
@@ -423,7 +428,7 @@ function openOverlay(photo) {
 
   overlayContent.innerHTML = `
     <img src="${photo.src}" alt="${photo.id}">
-    <div class="overlay-id-row">${photo.id}${dateHtml}</div>
+    <div class="overlay-id-row"><span class="overlay-id">${photo.id}</span>${dateHtml}</div>
     <div class="overlay-voice">${photo.voice}</div>
     ${overlayExifHtml(photo.exif)}
     <div class="overlay-meta">
